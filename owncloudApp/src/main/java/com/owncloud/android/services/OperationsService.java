@@ -205,9 +205,8 @@ public class OperationsService extends Service {
 
             // TODO - get rid of these exceptions
         } catch (
-                AccountNotFoundException | AuthenticatorException |
-                        OperationCanceledException | IOException e) {
-            e.printStackTrace();
+                AccountNotFoundException | AuthenticatorException | OperationCanceledException | IOException e) {
+            Timber.e(e);
         }
 
         mUndispatchedFinishedOperations.clear();
