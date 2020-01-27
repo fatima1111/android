@@ -1,7 +1,7 @@
 /**
  * ownCloud Android client application
  *
- * @author Abel García de Prada
+ * @author Christian Schabesberger
  * Copyright (C) 2020 ownCloud GmbH.
  *
  * This program is free software: you can redistribute it and/or modify
@@ -17,19 +17,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package com.owncloud.android.data.server.repository
+package com.owncloud.android.domain.server.model
 
-import com.owncloud.android.data.server.datasources.RemoteServerDataSource
-import com.owncloud.android.domain.server.ServerRepository
-import com.owncloud.android.domain.server.model.ServerInfo
-
-class OCServerRepository(
-    private val remoteServerDataSource: RemoteServerDataSource
-) : ServerRepository {
-    override fun checkPathExistence(path: String, userLogged: Boolean): Boolean =
-        remoteServerDataSource.checkPathExistence(path, userLogged)
-
-    override fun getServerInfo(path: String): ServerInfo =
-        remoteServerDataSource.getServerInfo(path)
-
+enum class AuthenticationMethod {
+    NONE, BASIC_HTTP_AUTH, BEARER_TOKEN;
 }

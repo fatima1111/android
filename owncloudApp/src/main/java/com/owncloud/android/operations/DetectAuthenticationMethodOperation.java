@@ -45,6 +45,7 @@ import java.util.List;
  * RemoteOperationResult)} returns in {@link RemoteOperationResult#getData()}
  * a value of {@link AuthenticationMethod}.
  */
+@Deprecated
 public class DetectAuthenticationMethodOperation extends RemoteOperation<List<AuthenticationMethod>> {
 
     /**

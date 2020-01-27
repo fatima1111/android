@@ -21,13 +21,23 @@ package com.owncloud.android.data.server.datasources.implementation
 
 import com.owncloud.android.data.executeRemoteOperation
 import com.owncloud.android.data.server.datasources.RemoteServerDataSource
+import com.owncloud.android.data.server.datasources.mapper.RemoteServerInfoMapper
+import com.owncloud.android.domain.server.model.ServerInfo
 import com.owncloud.android.lib.resources.server.ServerService
 
 class OCRemoteServerDataSource(
-    private val serverService: ServerService
+    private val serverService: ServerService,
+    private val remoteServerInfoMapper: RemoteServerInfoMapper
 ) : RemoteServerDataSource {
     override fun checkPathExistence(path: String, checkUserCredentials: Boolean): Boolean {
         executeRemoteOperation {
-             serverService.checkPathExistence(path = path, isUserLogged = checkUserCredentials)
-        }.let { return it == Any() }}
+            serverService.checkPathExistence(path = path, isUserLogged = checkUserCredentials)
+        }.let { return it == Any() }
+    }
+
+    override fun getServerInfo(path: String): ServerInfo {
+        executeRemoteOperation {
+            serverService.getServerInfo(path = path)
+        }.let { return remoteServerInfoMapper.toModel(it)!! }
+    }
 }

@@ -35,6 +35,7 @@ class UseCaseHelper : KoinComponent {
 
     fun getUserInfo(): UseCaseResult<UserInfo> = getUserInfoUseCase.execute(Unit)
 
-    fun checkPathExistence(remotePath: String): UseCaseResult<Any> = checkPathExistenceUseCase.execute(CheckPathExistenceUseCase.Params(remotePath, false))
+    fun checkPathExistence(remotePath: String): UseCaseResult<Any> =
+        checkPathExistenceUseCase.execute(CheckPathExistenceUseCase.Params(remotePath, false))
 
 }

@@ -79,5 +79,5 @@ val remoteDataSourceModule = module {
             get()
         )
     }
-    factory<RemoteServerDataSource> { OCRemoteServerDataSource(get()) }
+    factory<RemoteServerDataSource> { OCRemoteServerDataSource(get(), get()) }
 }

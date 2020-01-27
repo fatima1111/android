@@ -22,6 +22,8 @@ package com.owncloud.android.data.server.network
 import com.owncloud.android.lib.common.OwnCloudClient
 import com.owncloud.android.lib.common.operations.RemoteOperationResult
 import com.owncloud.android.lib.resources.server.CheckPathExistenceOperation
+import com.owncloud.android.lib.resources.server.GetServerInfoOperation
+import com.owncloud.android.lib.resources.server.RemoteServerInfo
 import com.owncloud.android.lib.resources.server.ServerService
 
 class OCServerService(override val client: OwnCloudClient) : ServerService {
@@ -29,5 +31,10 @@ class OCServerService(override val client: OwnCloudClient) : ServerService {
         CheckPathExistenceOperation(
             remotePath = path,
             isUserLogged = isUserLogged
+        ).execute(client)
+
+    override fun getServerInfo(path: String): RemoteOperationResult<RemoteServerInfo> =
+        GetServerInfoOperation(
+            url = path
         ).execute(client)
 }

@@ -19,6 +19,10 @@
 
 package com.owncloud.android.data.server.datasources
 
+import com.owncloud.android.domain.server.model.ServerInfo
+
 interface RemoteServerDataSource {
     fun checkPathExistence(path: String, checkUserCredentials: Boolean): Boolean
+
+    fun getServerInfo(path: String): ServerInfo
 }

@@ -2,7 +2,7 @@
  * ownCloud Android client application
  *
  * @author David González Verdugo
- * Copyright (C) 2019 ownCloud GmbH.
+ * Copyright (C) 2020 ownCloud GmbH.
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2,
@@ -23,6 +23,7 @@ import com.owncloud.android.data.capabilities.datasources.mapper.OCCapabilityMap
 import com.owncloud.android.data.sharing.shares.datasources.mapper.OCShareMapper
 import com.owncloud.android.data.sharing.shares.datasources.mapper.RemoteShareMapper
 import com.owncloud.android.data.capabilities.datasources.mapper.RemoteCapabilityMapper
+import com.owncloud.android.data.server.datasources.mapper.RemoteServerInfoMapper
 import com.owncloud.android.data.user.datasources.mapper.RemoteUserInfoMapper
 import com.owncloud.android.providers.CoroutinesDispatcherProvider
 import org.koin.dsl.module
@@ -34,6 +35,7 @@ val commonModule = module {
     factory { RemoteCapabilityMapper() }
     factory { RemoteShareMapper() }
     factory { RemoteUserInfoMapper() }
+    factory { RemoteServerInfoMapper() }
 
     single { CoroutinesDispatcherProvider() }
 }

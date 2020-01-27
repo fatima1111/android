@@ -28,7 +28,7 @@ import com.owncloud.android.lib.common.OwnCloudClient;
 import com.owncloud.android.lib.common.operations.RemoteOperation;
 import com.owncloud.android.lib.common.operations.RemoteOperationResult;
 import com.owncloud.android.lib.common.operations.RemoteOperationResult.ResultCode;
-import com.owncloud.android.lib.resources.status.GetRemoteStatusOperation;
+import com.owncloud.android.lib.resources.server.GetRemoteStatusOperation;
 import com.owncloud.android.lib.resources.status.OwnCloudVersion;
 import timber.log.Timber;
 
@@ -41,7 +41,8 @@ import java.util.List;
  * Checks the existence of a configured ownCloud server in the URL, gets its version 
  * and finds out what authentication method is needed to access files in it.
  */
-
+@Deprecated
+// Call usecase instead
 public class GetServerInfoOperation extends RemoteOperation<GetServerInfoOperation.ServerInfo> {
 
     private String mUrl;
@@ -72,7 +73,7 @@ public class GetServerInfoOperation extends RemoteOperation<GetServerInfoOperati
     @Override
     protected RemoteOperationResult<ServerInfo> run(OwnCloudClient client) {
         // first: check the status of the server (including its version)
-        GetRemoteStatusOperation getStatusOperation = new GetRemoteStatusOperation(mContext);
+        GetRemoteStatusOperation getStatusOperation = new GetRemoteStatusOperation();
         final RemoteOperationResult<OwnCloudVersion> remoteStatusResult = getStatusOperation.execute(client);
         RemoteOperationResult<ServerInfo> result = new RemoteOperationResult(remoteStatusResult);
 
